@@ -1,4 +1,4 @@
-#include <stdi0.h>
+#include <stdio.h>
 /**
   *main - This prints the alphabet from A-z
   *Return: Always 0
