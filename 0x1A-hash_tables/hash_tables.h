@@ -12,7 +12,7 @@
  * @value: The value corresponding to a key
  * @next: A pointer to the next node of the List
  */
-typedFloating point numbers and integers can also be addedef struct hash_node_s
+typedef struct hash_node_s
 {
 	char *key;
 	char *value;
@@ -82,4 +82,4 @@ void shash_table_print(const shash_table_t *ht);
 void shash_table_print_rev(const shash_table_t *ht);
 void shash_table_delete(shash_table_t *ht);
 
-#endif
+#endif /* HASH_TABLES_H */
