@@ -1,31 +1,36 @@
 #!/usr/bin/python3
+"""Contains function that returns the perimeter of the
+island described in grid
+"""
+
+
+def determine_soroundings(array, y, x):
+    """Determines whether soroundings has water or not
+    also if it's next or previous is at the ends
+    Args:
+        array (list): grid
+        y (int): current list index in `array`
+        x (int): current index in the list in `array`
+    """
+    mask = 1
+    top = array[y - 1][x] ^ mask if y > 0 else 1
+    bottom = array[y + 1][x] ^ mask if y < (len(array) - 1) else 1
+    left = array[y][x - 1] ^ mask if x > 0 else 1
+    right = array[y][x + 1] ^ mask if x < (len(array[y]) - 1) else 1
+    positions = top + bottom + right + left
+    return positions
+
 
 def island_perimeter(grid):
-  """
-  This function returns the perimeter of the island described in grid.
-
-  Args:
-    grid: A list of lists of integers, where 0 represents a water zone and 1 represents a land zone.
-
-  Returns:
-    The perimeter of the island.
-  """
-
-  # Initialize the perimeter to 0.
-  perimeter = 0
-
-  # Iterate over the grid.
-  for i in range(len(grid)):
-    for j in range(len(grid[0])):
-      # If the current cell is land, add 4 to the perimeter.
-      if grid[i][j] == 1:
-        perimeter += 4
-
-      # If the current cell is not land, subtract 1 from the perimeter if it is adjacent to land.
-      elif i > 0 and grid[i - 1][j] == 1:
-        perimeter -= 1
-      elif j > 0 and grid[i][j - 1] == 1:
-        perimeter -= 1
-
-  # Return the perimeter.
-  return perimeter
+    """Gets the perimeter determined by sorounding.
+    all sides that do not have water we increase perimeter.
+    Args:
+        grid (list): list of lists
+    """
+    land = 1
+    perimeter = 0
+    for i in range(len(grid)):
+        for j, x in enumerate(grid[i]):
+            if x == land:
+                perimeter += determine_soroundings(grid, i, j)
+    return perimeter
