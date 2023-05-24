@@ -1,2 +1,2 @@
-school: %.c
+school: %.c %.h
 	all: gcc -c $<
