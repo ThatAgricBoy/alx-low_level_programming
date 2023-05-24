@@ -3,5 +3,5 @@ SRC = %.c
 OBJ = %.o
 NAME = school
 
-all:
+all: $(OBJ)
 	$(CC) $(SRC) $(OBJ) -o $(NAME)
