@@ -1,0 +1,2 @@
+school: %.c
+	gcc -c $<
