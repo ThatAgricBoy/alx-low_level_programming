@@ -1,3 +1,3 @@
 school: %.c %.h
 all:
-	gcc -c $<
+	gcc main.c school.c
